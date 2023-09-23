@@ -11,6 +11,7 @@
 			<el-menu-item index="/setting/qiutai">球台管理</el-menu-item>
 			<el-menu-item index="/setting/zhujiao">助教管理</el-menu-item>
 			<el-menu-item index="/setting/zhangdan">账单管理</el-menu-item>
+			<el-menu-item index="/setting/vipclass">会员等级管理</el-menu-item>
 			<el-menu-item index="/setting/zhanshi">展示管理</el-menu-item>
 			</el-menu>
 			<router-view></router-view>

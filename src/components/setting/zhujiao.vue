@@ -17,7 +17,14 @@
 			<el-table-column prop="img" label="照片" />
 			<el-table-column prop="price" label="价格(元/每分钟)" />
 			<el-table-column prop="create_time" label="创建时间" />
-			
+			<el-table-column align="right">
+				<template #header>
+					是否上架
+				</template>
+				<template #default="scope">
+					<el-switch v-model="scope.row.flag" active-value="1" inactive-value="0" @change="isshangjia(scope.row)" />
+				</template>
+			</el-table-column>
 			<el-table-column align="right">
 				<template #header>
 					操作
@@ -31,8 +38,8 @@
 			</el-table-column>
 			
 		</el-table>
-		<el-pagination :page-size="data.pageSize" :current-page="data.page" background layout="prev, pager, next"
-			:total="data.row" />
+		
+			<el-pagination background layout="prev, pager, next" @update:current-page="next"  :current-page="data.page" :total="data.row"/>
 			</el-card>
 		<!-- tanchuceng -->
 		<el-drawer v-model="addvisible" :show-close="false">
@@ -109,11 +116,30 @@
 		getGoodsList()
 		
 	})
+	function next(e){
+	console.log(e)
+	data.page=e
+	getGoodsList()
+}
 	const tosku=(index,row)=>{
 		router.push({path:"/setting/sku", query: {goods_id:row.id}})
 	}
 	const kucun=(index,row)=>{
 		router.push({path:"/setting/kucun", query: {goods_id:row.id}})
+	}
+	const isshangjia=(e)=>{
+			console.log(e)
+			service({
+			url: "editzhujiao",
+			method: "post",
+			data:e
+		}).then((res) => {
+			getGoodsList()
+			ElMessage({
+				type: 'success',
+				message: 'ok',
+			})
+		})
 	}
 	function getGoodsClass(){
 		service({

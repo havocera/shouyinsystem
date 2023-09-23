@@ -162,7 +162,7 @@
 			process_attribute: [],
 			process_sku: [],
 			goodsList: [],
-			index: 1,
+			index: 0,
 			qiutai:[],
 			sku: [],
 			process_attribute: [],

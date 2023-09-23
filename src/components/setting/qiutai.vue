@@ -43,6 +43,7 @@
 			</el-table-column>
 			
 			</el-table>
+			<el-pagination background layout="prev, pager, next" @update:current-page="next"  :current-page="data.page" :total="data.row"/>
 			</el-card>
 			<!-- tanchuceng -->
 			<el-drawer v-model="addvisible" :show-close="false">
@@ -106,6 +107,11 @@ import {
 	onMounted(()=>{
 		getqiutai()
 	})
+	function next(e){
+	console.log(e)
+	data.page=e
+	getqiutai()
+}
 	function getqiutai() {
 		const reqdata = {
 			page: data.page,

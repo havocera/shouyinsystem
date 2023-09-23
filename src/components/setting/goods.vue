@@ -16,6 +16,14 @@
 			<el-table-column prop="product_img" label="商品照片" />
 			<el-table-column prop="goods_class" label="商品分类" />
 			<el-table-column prop="create_time" label="创建时间" />
+			<el-table-column >
+				<template #header>
+					是否上架
+				</template>
+				<template #default="scope">
+					<el-switch v-model="scope.row.flag" active-value="1" inactive-value="0" @change="isshangjia(scope.row)" />
+				</template>
+			</el-table-column>
 			<el-table-column align="right">
 				<template #header>
 					库存管理
@@ -48,8 +56,8 @@
 				</template>
 			</el-table-column>
 		</el-table>
-		<el-pagination :page-size="data.pageSize" :current-page="data.page" background layout="prev, pager, next"
-			:total="data.row" />
+		
+			<el-pagination background layout="prev, pager, next" @update:current-page="getGoodsList"  :current-page="data.page" :total="data.row"/>
 			</el-card>
 		<!-- tanchuceng -->
 		<el-drawer v-model="addvisible" :show-close="false">
@@ -128,6 +136,20 @@
 		getGoodsList()
 		getGoodsClass()
 	})
+	const isshangjia=(e)=>{
+			console.log(e)
+			service({
+			url: "addGoods",
+			method: "post",
+			data:e
+		}).then((res) => {
+			getGoodsList()
+			ElMessage({
+				type: 'success',
+				message: 'ok',
+			})
+		})
+	}
 	const tosku=(index,row)=>{
 		router.push({path:"/setting/sku", query: {goods_id:row.id}})
 	}

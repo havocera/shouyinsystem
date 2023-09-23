@@ -72,6 +72,9 @@ const routes = [
 			},{
 				path:"kucun",
 				component:()=> import("../components/setting/kucun.vue")
+			},{
+				path:"vipclass",
+				component:()=> import("../components/setting/vipclass.vue")
 			},
 			{
 				path:"zhanshi",
