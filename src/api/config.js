@@ -1,2 +1,2 @@
-const baseUrl="http://a.com/"
+const baseUrl="http://diancan.ahlssp.net/"
 export default baseUrl
