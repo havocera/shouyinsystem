@@ -57,7 +57,7 @@
 			</el-table-column>
 		</el-table>
 		
-			<el-pagination background layout="prev, pager, next" @update:current-page="getGoodsList"  :current-page="data.page" :total="data.row"/>
+			<el-pagination background layout="prev, pager, next" @update:current-page="pagenum"  :current-page="data.page" :total="data.row"/>
 			</el-card>
 		<!-- tanchuceng -->
 		<el-drawer v-model="addvisible" :show-close="false">
@@ -136,6 +136,10 @@
 		getGoodsList()
 		getGoodsClass()
 	})
+	const pagenum=(e)=>{
+			data.page=e
+			getGoodsList()
+	}
 	const isshangjia=(e)=>{
 			console.log(e)
 			service({

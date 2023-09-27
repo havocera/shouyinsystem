@@ -199,6 +199,7 @@
 				会员余额不足，剩余余额￥ {{ data.vip_balance }}
 
 			</div>
+			<div class="info" v-if="data.tips2" >{{ data.tips2 }}</div>
 			<div>
 
 				<el-form :model="data.balance" label-width="120px">
@@ -304,6 +305,7 @@ import service from "../../api/index.js"
 const jiezhangVisible = ref(false)
 const dandujiezhangVisible = ref(false)
 const data = reactive({
+	tips2:null,
 	qiutai: [],
 	qiutaiList: [],
 	select_qiutai: [],
@@ -387,6 +389,15 @@ const getbalance = () => {
 	
 		if (parseFloat(data.vipList[index].balance) > data.sum_count) {
 		data.vip_balance = data.vipList[index].balance
+		if(parseFloat(data.vipList[index].zhekou_balance)>data.qiutai_count){
+			data.sum_count=data.sum_count-data.qiutai_count
+			data.qiutai_count=data.qiutai_count*data.vipList[index].qiutaizhekou
+			data.sum_count+=data.qiutai_count
+			data.balance.price=data.sum_count
+			data.tips2="球台费用已享受会员折扣"
+		}else{
+
+		}
 		// data.tips=`会员余额充足，剩余余额￥ ${data.vipList[index].balance}`
 		data.is_balance_zu = 0
 	} else {
