@@ -350,30 +350,25 @@ const getbalancedandu = () => {
 	})
 	console.log(index, data.vipList[index].balance)
 	if(data.dandu._class=="qiutai"){
-	if (parseFloat(data.vipList[index].zhekou_balance) > data.dandu.sum_count) {
-		data.vip_balance = data.vipList[index].zhekou_balance
+	if (parseFloat(data.vipList[index].balance) > data.dandu.sum_count) {
+		data.vip_balance = data.vipList[index].balance
 		data.dandu.sum_count=data.dandu.sum_count*data.vipList[index].qiutaizhekou
 		data.dandu.vippay="zhekou_balance"
 		// data.tips=`会员余额充足，剩余余额￥ ${data.vipList[index].balance}`
 		data.is_balance_zu = 0
-	} else if(parseFloat(data.vipList[index].real_balance) > data.dandu.sum_count) {
-		data.vip_balance = data.vipList[index].real_balance
-		data.dandu.vippay="real_balance"
-		// data.tips=`会员余额不足，剩余余额￥ ${data.vipList[index].balance}`
-		data.is_balance_zu = 0
 	}else{
-		data.vip_balance = data.vipList[index].real_balance
+		data.vip_balance = data.vipList[index].balance
 		// data.tips=`会员余额不足，剩余余额￥ ${data.vipList[index].balance}`
 		data.is_balance_zu = 1
 	}
 }else{
-	if(parseFloat(data.vipList[index].real_balance) > data.dandu.sum_count) {
-		data.vip_balance = data.vipList[index].real_balance
+	if(parseFloat(data.vipList[index].balance) > data.dandu.sum_count) {
+		data.vip_balance = data.vipList[index].balance
 		data.dandu.vippay="real_balance"
 		// data.tips=`会员余额不足，剩余余额￥ ${data.vipList[index].balance}`
 		data.is_balance_zu = 0
 	}else{
-		data.vip_balance = data.vipList[index].real_balance
+		data.vip_balance = data.vipList[index].balance
 		// data.tips=`会员余额不足，剩余余额￥ ${data.vipList[index].balance}`
 		data.is_balance_zu = 1
 	}

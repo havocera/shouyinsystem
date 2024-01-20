@@ -77,6 +77,9 @@ onUnmounted(() => {
 	// 离开页面销毁定时器
 	clearInterval(intervalFlush)
 })
+const refresh=()=>{
+	window.location.reload()
+}
 
 </script>
 
@@ -92,7 +95,7 @@ onUnmounted(() => {
 						<el-button type="primary" @click="msgdrawer = !msgdrawer"><el-icon>
 								<BellFilled />
 							</el-icon></el-button>
-						<el-button type="primary">刷新</el-button>
+						<el-button type="primary" @click="refresh" >刷新</el-button>
 					</el-col>
 				</el-row>
 			</el-header>

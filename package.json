@@ -1,12 +1,71 @@
 {
-  "name": "vue3_cli_default",
-  "version": "0.0.0",
+  "name": "diancan",
+  "version": "1.2.1",
   "main": "electron/main.js",
+  "description": "安徽椒图信息科技有限公司",
+  "author": {
+    "name": "ihavoc",
+    "email": "ihavoc@163.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "start": "vite | electron ."
+    "start": "vite | electron .",
+    "electron:build": "vite build && electron-builder"
+  },
+  "build": {
+    "appId": "jiaotu.app",
+    "productName": "点餐系统",
+    "copyright": "Copyright © 2023 ihavoc",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "win": {
+      "icon": "./build/electron-icon/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "linux": {
+      "target": "AppImage"
+    },
+    "files": [
+      "./dist",
+      "./electron",
+      "!**/node_modules/**"
+    ],
+    "asar": false,
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./build/electron-icon/icon.ico",
+      "uninstallerIcon": "./build/electron-icon/icon.ico",
+      "installerHeaderIcon": "./build/electron-icon/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
@@ -27,6 +86,7 @@
     "@vitejs/plugin-vue": "^1.6.0",
     "@vue/compiler-sfc": "^3.2.6",
     "electron": "^26.2.2",
+    "electron-builder": "^24.6.4",
     "vite": "^2.5.2"
   }
 }

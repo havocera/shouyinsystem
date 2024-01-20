@@ -113,11 +113,10 @@
 				if (res.code) {
 					data.rowdata = res.data;
 					
-					ElNotification({
-						title: '成功',
-						message: res.message,
-						type: 'success',
-					})
+					ElMessage({
+				type: 'success',
+				message: 'ok',
+			})
 				} else {
 					ElNotification({
 						title: '错误',

@@ -1,2 +1,2 @@
-const baseUrl="http://diancan.ahlssp.net/"
-export default baseUrl
+const baseUrl="http://heishidiancan.jiaotu.cc/"
+export default baseUrl;

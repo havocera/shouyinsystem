@@ -101,11 +101,10 @@ const handleAvatarSuccess= (
 	}
     const submit=()=>{
         service({url:'setting',method:"post",data:data.form}).then((res)=>{
-            ElNotification({
-					title: '成功',
-					message: res.message,
-					type: 'success',
-				})
+            ElMessage({
+				type: 'success',
+				message: 'ok',
+			})
         })
     }
     const getdata=()=>{

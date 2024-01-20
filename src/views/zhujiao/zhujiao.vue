@@ -80,11 +80,12 @@
 					align="center">{{item.number}}</el-descriptions-item>
 				<el-descriptions-item label="时间" label-align="center"
 					align="center">{{item.create_time}}</el-descriptions-item>
-				<el-descriptions-item label="时间" label-align="center"
-					align="center"><el-button type="danger" @click="startyuyue(item)">
-					
-					助教开始
-				</el-button></el-descriptions-item>
+				<el-descriptions-item label="操作" label-align="center"
+					align="center"><el-button type="danger" @click="startyuyue(item)">助教开始
+				</el-button>
+				<el-button type="danger" @click="startyuyue(item)">取消预约
+				</el-button>
+				</el-descriptions-item>
 			</el-descriptions>
 		</el-drawer>
 	<!-- 预约桌号 -->
@@ -294,7 +295,7 @@
 						getRowData()
 						ElNotification({
 							title: '提示',
-							message: '助教已开启计时',
+							message: '助教已停止计时',
 							type: 'success',
 						})
 					} else {

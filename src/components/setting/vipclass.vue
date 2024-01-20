@@ -208,11 +208,10 @@ function getGoodsList() {
         if (res.code) {
             data.goodsList = res.data.row;
             data.row = res.data.count;
-            ElNotification({
-                title: '成功',
-                message: res.message,
-                type: 'success',
-            })
+            ElMessage({
+				type: 'success',
+				message: 'ok',
+			})
         } else {
             ElNotification({
                 title: '错误',

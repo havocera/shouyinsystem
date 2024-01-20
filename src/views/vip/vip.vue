@@ -26,8 +26,8 @@
 				<el-table-column prop="phone_number" label="手机号" />
 				<!-- <el-table-column prop="date_of_birth" label="出生日期" /> -->
 				<el-table-column prop="balance" label="账户余额" />
-				<el-table-column prop="zhekou_balance" label="可折扣金额" />
-				<el-table-column prop="real_balance" label="不可折扣金额" />
+				<!-- <el-table-column prop="zhekou_balance" label="可折扣金额" />
+				<el-table-column prop="real_balance" label="不可折扣金额" /> -->
 				<el-table-column prop="level" label="会员等级" />
 				<el-table-column align="right">
 					<template #header>
@@ -115,12 +115,10 @@
 			<div>
 				<el-form :model="data.chongzhi" label-width="120px">
 
-					<el-form-item label="充值可折扣金额">
-						<el-input-number v-model="data.chongzhi.zhekou_balance" size="large" :precision="2" :step="0.1" />
+					<el-form-item label="充值金额">
+						<el-input-number v-model="data.chongzhi.balance" size="large" :precision="2" :step="0.1" />
 					</el-form-item>
-					<el-form-item label="不可折扣金额">
-						<el-input-number v-model="data.chongzhi.real_balance" size="large" :precision="2" :step="0.1" />
-					</el-form-item>
+					
 					<el-form-item label="实付金额">
 						<el-input-number v-model="data.chongzhi.pay_balance" size="large" :precision="2" :step="0.1" />
 					</el-form-item>
@@ -159,10 +157,9 @@
 			<el-descriptions title="" v-for="item in data.chongzhihistory" :key="item.id" :column="6" border>
 				<el-descriptions-item label="实付金额" width="100" label-align="center"
 					align="center">{{ item.pay_balance }}</el-descriptions-item>
-				<el-descriptions-item label="不可折扣金额" width="70" label-align="center"
-					align="center">{{ item.real_balance }}</el-descriptions-item>
-				<el-descriptions-item label="折扣金额" width="60" label-align="center"
-					align="center">{{ item.zhekou_balance }}</el-descriptions-item>
+				<el-descriptions-item label="充值金额" width="70" label-align="center"
+					align="center">{{ item.balance }}</el-descriptions-item>
+				
 				<el-descriptions-item label="时间" label-align="center"
 					align="center">{{ item.create_time }}</el-descriptions-item>
 				<el-descriptions-item label="方式" label-align="center" width="150"
@@ -256,11 +253,11 @@ const addchongzhi = () => {
 		method: "post",
 		data: {
 			type: data.chongzhi.type,
-			real_balance: data.chongzhi.real_balance,
+			
 			vip_id: data.chongzhiUser.id,
-			zhekou_balance: data.chongzhi.zhekou_balance,
+			
 			pay_balance: data.chongzhi.pay_balance,
-			balance: data.chongzhi.real_balance + data.chongzhi.zhekou_balance
+			balance: data.chongzhi.balance
 		}
 	}).then((res) => {
 		chongzhiVisible.value = false
